@@ -1,0 +1,35 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '((".nytimes.com"
+  [url-cookie "nyt-purr" "cfhhcfh" "Thu, 08 Apr 2021 12:36:46 GMT" "/" ".nytimes.com" nil])
+ (".sagepub.com"
+  [url-cookie "__cfduid" "da5059a8edfd21b11188e9d0989e6ec7c1586351643" "Fri, 08-May-20 13:14:03 GMT" "/" ".sagepub.com" nil])
+ (".google.com"
+  [url-cookie "CGIC" "IgMqLyo" "Sat, 03-Oct-2020 18:35:50 GMT" "/search" ".google.com" nil]
+  [url-cookie "CGIC" "IgMqLyo" "Sat, 03-Oct-2020 18:35:50 GMT" "/complete/search" ".google.com" nil]
+  [url-cookie "NID" "201=qF6tl6ntCH5Ebgem6aJLoa54IuTH9lERW55mNyEhawdFMmzWJc3Gv4zoNV66nddTZWpsp5h1TWrOzQus5LLXLDRHb56q0yGLbV5lO_ZhOhZS-3DHD9w59pBiAEY5tnEohKxV6qXNiAEGG0MnDcOed2xrQ7TXKgg7XhpMi8SHFQ8" "Tue, 06-Oct-2020 18:35:39 GMT" "/" ".google.com" nil]))
+)
+(setq url-cookie-secure-storage
+ '((".google.com"
+  [url-cookie "1P_JAR" "2020-04-08-12" "Fri, 08-May-2020 12:35:33 GMT" "/" ".google.com" t])
+ (".journals.sagepub.com"
+  [url-cookie "MACHINE_LAST_SEEN" "2020-04-10T18%3A46%3A19.022-07%3A00" "Fri, 05-Feb-2021 01:46:19 GMT" "/" ".journals.sagepub.com" t]
+  [url-cookie "MAID" "gMShLKAoQqo4De3Ld+bNTA==" "Fri, 05-Feb-2021 01:46:19 GMT" "/" ".journals.sagepub.com" t])
+ (".doi.org"
+  [url-cookie "__cfduid" "dd64024c935429cee4d2dbc0aa76add561586351642" "Fri, 08-May-20 13:14:02 GMT" "/" ".doi.org" t])
+ (".wikipedia.org"
+  [url-cookie "WMF-Last-Access-Global" "06-Apr-2020" "Fri, 08 May 2020 12:00:00 GMT" "/" ".wikipedia.org" t])
+ ("en.wikipedia.org"
+  [url-cookie "WMF-Last-Access" "06-Apr-2020" "Fri, 08 May 2020 12:00:00 GMT" "/" "en.wikipedia.org" t])
+ (".nytimes.com"
+  [url-cookie "nyt-a" "Dybgqcik7iXOg2X4SGqSVi" "Thu, 08 Apr 2021 12:36:46 GMT" "/" ".nytimes.com" t])
+ (".youtube.com"
+  [url-cookie "VISITOR_INFO1_LIVE" "f02e-dMA8OY" "Sat, 03-Oct-2020 18:36:03 GMT" "/" ".youtube.com" t]))
+)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:
