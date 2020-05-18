@@ -1,0 +1,32 @@
+;;; -*- coding: utf-8 -*-
+(("c:/Users/jacob/Emacs/Notes/20S/CS_214/Notes/Encapsulation.org" . 1330)
+ ("c:/Users/jacob/Emacs/Notes/20S/CS_214/Notes/Concurrency.org" . 493)
+ ("c:/Users/jacob/Emacs/.emacs.d/.cache/recentf" . 706)
+ ("c:/Users/jacob/Emacs/.emacs.d/.cache/layouts/persp-auto-save" . 1625)
+ ("c:/Windows/System32/"
+  (dired-filename . "c:/Windows/System32/.."))
+ ("c:/Windows/"
+  (dired-filename . "c:/Windows/TextInput"))
+ ("c:/Users/jacob/Documents/"
+  (dired-filename . "c:/Users/jacob/Documents/.."))
+ ("c:/Users/jacob/Emacs/test.txt" . 29)
+ ("c:/Users/jacob/Emacs/.spacemacs" . 2111)
+ ("c:/Users/jacob/Documents/Projects/asdf.txt" . 81)
+ ("c:/Users/jacob/"
+  (dired-filename . "c:/Users/jacob/Emacs"))
+ ("c:/Users/jacob/Emacs/"
+  (dired-filename . "c:/Users/jacob/Emacs/Notes"))
+ ("c:/Users/jacob/Emacs/Notes/"
+  (dired-filename . "c:/Users/jacob/Emacs/Notes/20S"))
+ ("c:/Users/jacob/Emacs/Notes/20S/"
+  (dired-filename . "c:/Users/jacob/Emacs/Notes/20S/CS_214"))
+ ("c:/Users/jacob/Emacs/Notes/20S/CS_214/"
+  (dired-filename . "c:/Users/jacob/Emacs/Notes/20S/CS_214/BlockStructures.org"))
+ ("c:/Users/jacob/Emacs/.emacs.d/elpa/"
+  (dired-filename . "c:/Users/jacob/Emacs/.emacs.d/elpa/.."))
+ ("c:/Users/jacob/Emacs/org-mode/"
+  (dired-filename . "c:/Users/jacob/Emacs/org-mode/school_tasks.org"))
+ ("c:/Users/jacob/Emacs/org-mode/school_tasks.org" . 344)
+ ("c:/Users/jacob/Emacs/.emacs.d/init.el" . 1099)
+ ("c:/Users/jacob/Emacs/.emacs.d/"
+  (dired-filename . "c:/Users/jacob/Emacs/.emacs.d/core")))

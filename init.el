@@ -24,6 +24,7 @@
 
 
 
+
 ;; Any add to list for package-archives (to add marmalade or melpa) goes here
 (add-to-list 'package-archives 
     '("MELPA" .
@@ -70,6 +71,8 @@
 ;;(setq auto-save-file-name-transforms '((".*" (concat (file-name-directory buffer-file-name) ".emacs-saves/\\2") t)))
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs-saves/\\2" t)))
+
+
 
 
 
