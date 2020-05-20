@@ -1,34 +1,30 @@
 ;;enable packages to be installed from melpa
 (require 'package)
 
-; list the packages you want
+					; list the packages you want
 (setq package-list '(org-journal eyebrowse org-ref))
 
-; list the repositories containing them
+					; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-; activate all the packages (in particular autoloads)
+					; activate all the packages (in particular autoloads)
 (package-initialize)
 
-; fetch the list of packages available 
+					; fetch the list of packages available 
 (unless package-archive-contents
   (package-refresh-contents))
 
-; install the missing packages
+					; install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
 
-
-
-
-
 ;; Any add to list for package-archives (to add marmalade or melpa) goes here
 (add-to-list 'package-archives 
-    '("MELPA" .
-      "http://melpa.milkbox.net/packages/"))
+	     '("MELPA" .
+	       "http://melpa.milkbox.net/packages/"))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -38,7 +34,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#ffffff" "#37ffff" "#e074e3" "#3732ff" "#ffff0b" "#37ff3c" "#ff400b" "#848088"])
- '(custom-enabled-themes (quote (misterioso)))
+ '(custom-enabled-themes (quote (leuven-dark)))
  '(custom-safe-themes
    (quote
     ("4e0c46bacfa18716370f52f4e1acda19ddeced16caac66afc33fa0d0161df111" "5a28123387ad126d39f4f1200f953fe6a3a5397c35efc9628be572a1a167ebe0" "f3b2a32914eebbc95b08f04d4377ed8b51205037082a5f20686c0c1aad2cce89" "5f1bd7f67dc1598977e69c6a0aed3c926f49581fdf395a6246f9bc1df86cb030" "3f5f69bfa958dcf04066ab2661eb2698252c0e40b8e61104e3162e341cee1eb9" default)))
@@ -47,7 +43,7 @@
    (quote
     (("b" "For recording those lightbulb moments" entry
       (file "~/org/brainstorm.org")
-      "" :prepend t))))
+      "" :prepend t))) t)
  '(org-journal-dir "~/daily_tasks/")
  '(org-journal-file-format "%m.%d.%Y.org")
  '(package-selected-packages
@@ -102,7 +98,7 @@
 
 
 ;;(concat (file-name-directory buffer-file-name) "asdf")
-				       
+
 ;; no startup msg
 
 ;; Added by Package.el.  This must come before configurations of
@@ -114,8 +110,8 @@
 (use-package org-journal  
   :ensure t
   :custom
-      (org-journal-dir "~/daily_tasks/")
-      (org-journal-file-format "%m.%d.%Y.org"))
+  (org-journal-dir "~/daily_tasks/")
+  (org-journal-file-format "%m.%d.%Y.org"))
 
 
 ;;org mode keybinding for showing all nodes
@@ -210,6 +206,7 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
               (widen)
               (setq-local org-tag-alist (org-get-buffer-tags)))))
 
+; example org-capture-templates that is rewritten ; for personal inspiration
 (setq org-capture-templates
       '(("d" ; key
 	 "Demo template"  ; description
@@ -233,59 +230,94 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 	 "* BLA\n %i %?")
 
 	
-	 ("f"                ; key
-	  "Todo"             ; description
-	  entry              ; type
-	  (file+headline "~/org-mode/notes.org" "tasks")       ; target
-	  "* TODO [#B] %^{Todo} %^g \n:PROPERTIES:\n:Created: %U\nLink: %a\n:END:\n\n%?"  ; template
-	  :prepend t        ; properties
-	  :empty-lines 1    ; properties
-	  :created t        ; properties
-	  )
+	("f"                ; key
+	 "Todo"             ; description
+	 entry              ; type
+	 (file+headline "~/org-mode/notes.org" "tasks")       ; target
+	 "* TODO [#B] %^{Todo} %^g \n:PROPERTIES:\n:Created: %U\nLink: %a\n:END:\n\n%?"  ; template
+	 :prepend t        ; properties
+	 :empty-lines 1    ; properties
+	 :created t        ; properties
+	 )
 	
 	))
 
+; template-factor is a wrapper for easily making org-templates
+(defun template-factor (key description fileName header text)
+  `(,key
+   ,description
+   entry
+   (file+headline ,(concat "~/org-mode/" fileName) ,header)
+   ,text
+       :prepend t
+       :empty-lines 1
+       :created t)
+  )
 
 (setq org-capture-templates
-      '(
-        ("s" "School Task Menu")
- 	("sl"				; key
-	  "School Task With Link"             ; description
-	  entry              ; type
-	  (file+headline "~/org-mode/school_tasks.org" "Tasks")       ; target
-	  "* TODO %^{Todo} %^{Hours} %? %^g%^g \n:PROPERTIES:\n:Created: %U\nLink: %a\n:END:\n\n"  ; template
-	  :prepend t        ; properties
-	  :empty-lines 1    ; properties
-	  :created t        ; properties
+      `(
+	("s" "School Task Menu")
+	,(template-factor
+	  "sl"               ; key
+	  "School With Link" ; description
+	  "school_tasks.org" ; file
+	  "Tasks" "* TODO %^{Todo} %^{Hours} %? %^g%^g \n:PROPERTIES:\n:Created: %U\nLink: %a\n:END:\n\n" ; text
 	  )
-	
-
-        ("sk"				; key
-	  "School Task Without Link"             ; description
-	  entry              ; type
-	  (file+headline "~/org-mode/school_tasks.org" "Tasks")       ; target
-	  "* TODO %^{Todo} %? %^g%^g \n:PROPERTIES:\n:Created: %U\n:END:\n\n"  ; template
-	  :prepend t        ; properties
-	  :empty-lines 1    ; properties
-	  :created t        ; properties
+	,(template-factor
+	  "sk"
+	  "School Without Link"
+	  "school_tasks.org"
+	  "Tasks"
+	  "* TODO %^{Todo} %? %^g%^g \n:PROPERTIES:\n:Created: %U\n:END:\n\n"
 	  )
-
-	("n"				; key
-	  "School Task Without Link"            ; description
-	  entry              ; type
-	  (file+headline "~/org-mode/school_tasks.org" "Tasks")       ; target
-	  "* TODO %^{Todo} %? %^g%^g \n:PROPERTIES:\n:Created: %U\n:END:\n\n"  ; template
-	  :prepend t        ; properties
-	  :empty-lines 1    ; properties
-	  :created t        ; properties
+	,(template-factor
+	  "n"
+	  "School Without Link"
+	  "school_tasks.org"
+	  "Tasks"
+	  "* TODO %^{Todo} %? %^g%^g \n:PROPERTIES:\n:Created: %U\n:END:\n\n"
 	  )
-	
-	
-      
+	,(template-factor
+	  "z"
+	  "Testing template-factorfff"
+	  "template-factor.org"
+	  "template-factorf"
+	  "* %^{template-factor-prompt}"
+	  )
+	("p" "Insert Useful Links")
+	,(template-factor
+	  "pe"
+	  "Emacs Resources"
+	  "resources.org"
+	  "Emacs"
+	  "* %^{Description} \n:PROPERTIES:\n:Created: %U\n:ConfigLink: %a\n:WebLink: %^{Website URL} \n:END:\n\n"  ; template
+	  )
+	,(template-factor
+	  "pm"
+	  "Miscellaneous Resources"
+	  "resources.org"
+	  "Miscellaneous"
+	  "* %^{Description} \n:PROPERTIES:\n:Created: %U\n:WebLink: %^{Website URL} \n:END:\n\n"
+	  )
+	))
 
-      ))
+;; (setq org-ref-bibliography-notes "~/org-mode/ref/notes.org"
+;;       org-ref-default-bibliography '("~/org-mode/ref/master.bib")
+;;       org-ref-pdf-directory "~/org-mode/ref/pdfs/")
 
 
-(setq org-ref-bibliography-notes "~/org-mode/ref/notes.org"
-      org-ref-default-bibliography '("~/org-mode/ref/master.bib")
-      org-ref-pdf-directory "~/org-mode/ref/pdfs/")
+
+;; Changes theme based on opened file, however, it is kinda clunky 
+;; (defun my-set-theme-on-mode ()
+;;   "set background color depending on file suffix"
+;;   (interactive)
+;;   (let ((fileNameSuffix (file-name-extension (buffer-file-name) ) ))
+;;     (cond
+;;      ((string= fileNameSuffix "el" ) (set-background-color "honeydew"))
+;;      ((string= fileNameSuffix "txt" ) (set-background-color "cornsilk"))
+;;      ((string= fileNameSuffix "org" ) (set-background-color "adwaita"))
+;;      (t (message "%s" "no match found"))
+;;      )
+;;     ))
+
+;;(add-hook 'find-file-hook 'my-set-theme-on-mode)
