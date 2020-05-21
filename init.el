@@ -48,13 +48,36 @@
  '(org-journal-file-format "%m.%d.%Y.org")
  '(package-selected-packages
    (quote
-    (auctex-lua org-edit-latex org-re-reveal-ref org-ref pdf-tools eww-lnum use-package eyebrowse org-journal dracula-theme leuven-theme))))
+    (popup-complete auctex-lua org-edit-latex org-re-reveal-ref org-ref pdf-tools eww-lnum use-package eyebrowse org-journal dracula-theme leuven-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; allow help for function under cursor
+(require 'popup)
+
+;; Documentation bla bla
+(defun describe-thing-in-popup ()
+  (interactive)
+  (let* ((thing (symbol-at-point))
+         (help-xref-following t)
+         (description (save-window-excursion
+                        (with-temp-buffer
+                          (help-mode)
+                          (help-xref-interned thing)
+                          (buffer-string)))))
+    (popup-tip description
+               :point (point)
+               :around t
+               :height 20
+               :scroll-bar t
+               :margin t)))
+
+(define-key global-map "\C-x9" 'describe-thing-in-popup)
+
 
 (setq default-directory "~/Notes")
 (cd "~/Notes")
@@ -247,7 +270,8 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
   `(,key
    ,description
    entry
-   (file+headline ,(concat "~/org-mode/" fileName) ,header)
+					;   (file+headline ,(concat "~/org-mode/" fileName) ,header)
+   (file+headline ,(concat org-directory "/" fileName) ,header)
    ,text
        :prepend t
        :empty-lines 1
