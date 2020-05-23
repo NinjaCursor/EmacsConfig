@@ -7,7 +7,9 @@
 					; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+			 ("magit" . "")
+			 ))
 
 					; activate all the packages (in particular autoloads)
 (package-initialize)
@@ -37,7 +39,7 @@
  '(custom-enabled-themes (quote (leuven-dark)))
  '(custom-safe-themes
    (quote
-    ("4e0c46bacfa18716370f52f4e1acda19ddeced16caac66afc33fa0d0161df111" "5a28123387ad126d39f4f1200f953fe6a3a5397c35efc9628be572a1a167ebe0" "f3b2a32914eebbc95b08f04d4377ed8b51205037082a5f20686c0c1aad2cce89" "5f1bd7f67dc1598977e69c6a0aed3c926f49581fdf395a6246f9bc1df86cb030" "3f5f69bfa958dcf04066ab2661eb2698252c0e40b8e61104e3162e341cee1eb9" default)))
+    ("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "4e0c46bacfa18716370f52f4e1acda19ddeced16caac66afc33fa0d0161df111" "5a28123387ad126d39f4f1200f953fe6a3a5397c35efc9628be572a1a167ebe0" "f3b2a32914eebbc95b08f04d4377ed8b51205037082a5f20686c0c1aad2cce89" "5f1bd7f67dc1598977e69c6a0aed3c926f49581fdf395a6246f9bc1df86cb030" "3f5f69bfa958dcf04066ab2661eb2698252c0e40b8e61104e3162e341cee1eb9" default)))
  '(hl-sexp-background-color "#33323e")
  '(org-capture-templates
    (quote
@@ -48,7 +50,7 @@
  '(org-journal-file-format "%m.%d.%Y.org")
  '(package-selected-packages
    (quote
-    (popup-complete auctex-lua org-edit-latex org-re-reveal-ref org-ref pdf-tools eww-lnum use-package eyebrowse org-journal dracula-theme leuven-theme))))
+    (solarized-theme magit popup-complete auctex-lua org-edit-latex org-re-reveal-ref org-ref pdf-tools eww-lnum use-package eyebrowse org-journal dracula-theme leuven-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -91,8 +93,9 @@
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs-saves/\\2" t)))
 
-
-
+(use-package magit
+:config
+(global-set-key (kbd "C-c m") 'magit-status))
 
 
 ;;makes shift tab work
@@ -108,6 +111,7 @@
         (untabify (match-beginning 0) (match-end 0)))
       (when (looking-at "^    ")
         (replace-match "")))))
+
 
 
 ;;set file header for each daily notes
@@ -335,6 +339,14 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 (setq backup-directory-alist '(("." . "~/.emacs-backup")))
 
 
+;; save-hook-function
+;; (defun save-hook-test ()
+;;   (message "It works!")
+;;   )
+
+;; (add-hook 'after-save-hook 'save-hook-test)
+
+
 ;; (setq org-ref-bibliography-notes "~/org-mode/ref/notes.org"
 ;;       org-ref-default-bibliography '("~/org-mode/ref/master.bib")
 ;;       org-ref-pdf-directory "~/org-mode/ref/pdfs/")
@@ -355,3 +367,5 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 ;;     ))
 
 ;;(add-hook 'find-file-hook 'my-set-theme-on-mode)
+;;(default-directory)
+;;(buffer-file-name (current-buffer))
