@@ -44,7 +44,7 @@
     (("b" "For recording those lightbulb moments" entry
       (file "~/org/brainstorm.org")
       "" :prepend t))) t)
- '(org-journal-dir "~/daily_tasks/")
+ '(org-journal-dir "~/org-journal/")
  '(org-journal-file-format "%m.%d.%Y.org")
  '(package-selected-packages
    (quote
@@ -265,12 +265,12 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 	
 	))
 
-; template-factor is a wrapper for easily making org-templates
+; template-factor is a wrapper for org-templates reducing redundant code
 (defun template-factor (key description fileName header text)
   `(,key
    ,description
    entry
-					;   (file+headline ,(concat "~/org-mode/" fileName) ,header)
+   ; (file+headline ,(concat "~/org-mode/" fileName) ,header)
    (file+headline ,(concat org-directory "/" fileName) ,header)
    ,text
        :prepend t
@@ -280,26 +280,27 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
 (setq org-capture-templates
       `(
-	("s" "School Task Menu")
-	,(template-factor
-	  "sl"               ; key
-	  "School With Link" ; description
-	  "school_tasks.org" ; file
-	  "Tasks" "* TODO %^{Todo} %^{Hours} %? %^g%^g \n:PROPERTIES:\n:Created: %U\nLink: %a\n:END:\n\n" ; text
-	  )
-	,(template-factor
-	  "sk"
-	  "School Without Link"
-	  "school_tasks.org"
-	  "Tasks"
-	  "* TODO %^{Todo} %? %^g%^g \n:PROPERTIES:\n:Created: %U\n:END:\n\n"
-	  )
+	;;; Uncomment this during school
+	;; ("s" "School Task Menu")
+	;; ,(template-factor
+	;;   "sl"               ; key
+	;;   "School With Link" ; description
+	;;   "school_tasks.org" ; file
+	;;   "Tasks" "* TODO %^{Todo} %^{Hours} %? %^g%^g \n:PROPERTIES:\n:Created: %U\nLink: %a\n:END:\n\n" ; text
+	;;   )
+	;; ,(template-factor
+	;;   "sk"
+	;;   "School Without Link"
+	;;   "school_tasks.org"
+	;;   "Tasks"
+	;;   "* TODO %^{Todo} %? %^g%^g \n:PROPERTIES:\n:Created: %U\n:END:\n\n"
+	;;   )
 	,(template-factor
 	  "n"
-	  "School Without Link"
-	  "school_tasks.org"
-	  "Tasks"
-	  "* TODO %^{Todo} %? %^g%^g \n:PROPERTIES:\n:Created: %U\n:END:\n\n"
+	  "Generic Task"
+	  "tasks.org"
+	  "TASKS"
+	  "* TODO %^{Todo} %? %^g \n:PROPERTIES:\n:Created: %U\n:END:\n\n"
 	  )
 	,(template-factor
 	  "z"
@@ -324,6 +325,15 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 	  "* %^{Description} \n:PROPERTIES:\n:Created: %U\n:WebLink: %^{Website URL} \n:END:\n\n"
 	  )
 	))
+
+
+;; change save directory of files
+(setq auto-save-file-name-transforms
+  `((".*" "~/.emacs-saves/" t)))
+
+;; change backups directory of files
+(setq backup-directory-alist '(("." . "~/.emacs-backup")))
+
 
 ;; (setq org-ref-bibliography-notes "~/org-mode/ref/notes.org"
 ;;       org-ref-default-bibliography '("~/org-mode/ref/master.bib")
