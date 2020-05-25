@@ -399,7 +399,18 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 	  "Miscellaneous"
 	  "* %^{Description} \n:PROPERTIES:\n:Created: %U\n:WebLink: %^{Website URL} \n:END:\n\n"
 	  )
+	,(template-factor
+	  "j"
+	  "Journal Entry"
+	  "journal.gpg"
+	  "Journal"
+	  "* %U\n %^{Description}\n\n "
+	  )
 	))
+
+;; Enable visual line mode (word wrapping and indents for org mode
+(defun turn-on-visual-line-mode () (visual-line-mode 1))  
+(add-hook 'org-mode-hook 'turn-on-visual-line-mode)  
 
 
 ;; change save directory of files
