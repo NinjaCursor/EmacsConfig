@@ -230,8 +230,8 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
-(setq org-agenda-files (list "~/org-mode/tasks.org"
-                             "~/org-mode/school_tasks.org"))
+(setq org-agenda-files (list "~/DropBox/org-mode/tasks.org"
+                             "~/DropBox/org-mode/school_tasks.org"))
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c C-l") 'org-insert-link)
@@ -247,7 +247,7 @@
             (eyebrowse-mode t)
             (setq eyebrowse-new-workspace t)))
 
-(setq org-directory "~/org-mode")
+(setq org-directory "~/DropBox/org-mode")
 
 
 
