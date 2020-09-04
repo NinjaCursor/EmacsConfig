@@ -255,7 +255,7 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
-(setq org-agenda-files '("~/org-mode/"))
+(setq org-agenda-files '("~/DropBox/org-mode/"))
 
 (defun air-org-skip-subtree-if-habit ()
   "Skip an agenda entry if it has a STYLE property equal to \"habit\"."
