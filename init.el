@@ -1,7 +1,7 @@
 ;;enable packages to be installed from melpa
 (require 'package)
 					; list the packages you want
-(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter))
+(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit))
 
 					; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
@@ -149,10 +149,13 @@
 
 (when (string-equal system-type "windows-nt")
   (setq exec-path '(
-            "C:/Program Files/MiKTeX/miktex/bin/x64"
+		    "C:/Program Files/MiKTeX/miktex/bin/x64"
+		    "C:/Program Files/Git/bin"
 	    )
 	)
   )
+
+(define-key global-map (kbd "C-c g") 'magit-status)
 
 (latex-preview-pane-enable) ; automatically compiles LaTeX files
 
