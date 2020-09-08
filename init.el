@@ -1,6 +1,7 @@
 ;;enable packages to be installed from melpa
 (require 'package)
 
+
 					; list the packages you want
 (setq package-list '(org-journal eyebrowse org-ref))
 
@@ -11,7 +12,6 @@
 			 ("magit" . "")
 			 ("MELPA" . "http://melpa.org/packages/")
 			 ))
-
 
 (require 'epa-file)
 (epa-file-enable)
@@ -51,7 +51,7 @@
  '(cua-normal-cursor-color "#DCDCCC")
  '(cua-overwrite-cursor-color "#F0DFAF")
  '(cua-read-only-cursor-color "#7F9F7F")
- '(custom-enabled-themes (quote (dracula)))
+ '(custom-enabled-themes (quote (whiteboard)))
  '(custom-safe-themes
    (quote
     ("0fffa9669425ff140ff2ae8568c7719705ef33b7a927a0ba7c5e2ffcfac09b75" "c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" "51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "4e0c46bacfa18716370f52f4e1acda19ddeced16caac66afc33fa0d0161df111" "5a28123387ad126d39f4f1200f953fe6a3a5397c35efc9628be572a1a167ebe0" "f3b2a32914eebbc95b08f04d4377ed8b51205037082a5f20686c0c1aad2cce89" "5f1bd7f67dc1598977e69c6a0aed3c926f49581fdf395a6246f9bc1df86cb030" "3f5f69bfa958dcf04066ab2661eb2698252c0e40b8e61104e3162e341cee1eb9" default)))
@@ -83,6 +83,7 @@
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#488249" "#95d291" "#57a2a4" "#93E0E3" "#DC8CC3" "#bbb0cb")))
+ '(org-agenda-files nil)
  '(org-capture-templates
    (quote
     (("b" "For recording those lightbulb moments" entry
@@ -92,7 +93,7 @@
  '(org-journal-file-format "%m.%d.%Y.org")
  '(package-selected-packages
    (quote
-    (elpy powershell vimish-fold hideshowvis rust-mode solarized-theme magit popup-complete auctex-lua org-edit-latex org-re-reveal-ref org-ref pdf-tools eww-lnum use-package eyebrowse org-journal dracula-theme leuven-theme)))
+    (org-noter interleave magit-popup auctex-cluttex latex-preview-pane auctex-latexmk elpy powershell vimish-fold hideshowvis rust-mode solarized-theme magit popup-complete auctex-lua org-edit-latex org-re-reveal-ref org-ref pdf-tools eww-lnum use-package eyebrowse org-journal dracula-theme leuven-theme)))
  '(pos-tip-background-color "#4F4F4F")
  '(pos-tip-foreground-color "#FFFFEF")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#7F9F7F" "#4F4F4F" 0.2))
@@ -135,6 +136,26 @@
  ;; If there is more than one, they won't work right.
  )
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (latex . t)))
+
+(setq doc-view-ghostscript-program "C:/Program Files/gs/gs9.52/bin")
+
+(when (string-equal system-type "windows-nt")
+  (setq exec-path '(
+            "C:/Program Files/MiKTeX/miktex/bin/x64"
+	    )
+	)
+  )
+
+(latex-preview-pane-enable) ; automatically compiles LaTeX files
+
+(use-package pdf-tools
+
+:config (pdf-tools-install))
+
 ;; allow help for function under cursor
 (require 'popup)
 
@@ -154,7 +175,7 @@
                :scroll-bar t
                :margin t)))
 
-(define-key global-map "\C-x9" 'describe-thing-in-popuP)
+(define-key global-map "\C-x9" 'describe-thing-in-popup)
 
 (defun capitalize-backwards ()
             "Upcase the last letter of the word at point."
@@ -172,9 +193,10 @@
 (setq auto-save-file-name-transforms
       `((".*" "~/.emacs-saves/\\2" t)))
 
-(use-package magit
-  :config
-  (global-set-key (kbd "C-c m") 'magit-status))
+;; (use-package magit
+;;   :config
+;;   (global-set-key (kbd "C-c m") 'magit-status))
+
 
 
 ;;makes shift tab work
@@ -191,7 +213,7 @@
       (when (looking-at "^    ")
         (replace-match "")))))
 
-
+(load "auctex.el" nil t t)
 
 ;;set file header for each daily notes
 (setq org-journal-file-header (concat
@@ -201,7 +223,7 @@
 
 
 
-
+(setq org-latex-create-formula-image-program 'imagemagick)
 
 ;;(concat (file-name-directory buffer-file-name) "asdf")
 
@@ -230,8 +252,8 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
-(setq org-agenda-files (list "~/DropBox/org-mode/tasks.org"
-                             "~/DropBox/org-mode/school_tasks.org"))
+(setq org-agenda-files (list "~/Dropbox/org-mode/tasks.org"
+                             "~/Dropbox/org-mode/school_tasks.org"))
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c C-l") 'org-insert-link)
@@ -247,7 +269,7 @@
             (eyebrowse-mode t)
             (setq eyebrowse-new-workspace t)))
 
-(setq org-directory "~/DropBox/org-mode")
+(setq org-directory "~/Dropbox/org-mode")
 
 
 
@@ -255,7 +277,7 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
-(setq org-agenda-files '("~/org-mode/"))
+(setq org-agenda-files '("~/Dropbox/org-mode/"))
 
 (defun air-org-skip-subtree-if-habit ()
   "Skip an agenda entry if it has a STYLE property equal to \"habit\"."
@@ -365,12 +387,18 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 (setq org-capture-templates
       `(
 	;;;; Uncomment this during school
+	,(template-factor
+	  "h"               ; key
+	  "Miscellaneous Note With Link" ; description
+	  "notes.org" ; file
+	  "Notes" "* %^{Project} %^{Description} \n:PROPERTIES:\n:Created: %U\nLink: %a\n:END:\n\n" ; text
+	  )
 	("s" "School Task Menu")
 	,(template-factor
 	  "sl"               ; key
 	  "School With Link" ; description
 	  "school_tasks.org" ; file
-	  "Tasks" "* TODO %^{Todo} %^{Hours} %? %^g%^g \n:PROPERTIES:\n:Created: %U\nLink: %a\n:END:\n\n" ; text
+	  "Tasks" "* TODO %^{Todo} %? %^g%^g \n:PROPERTIES:\n:Created: %U\nLink: %a\n:END:\n\n" ; text
 	  )
 	,(template-factor
 	  "sk"
@@ -478,6 +506,15 @@ Null prefix argument turns off the mode."
 
 (setq default-directory "~/")
 (cd "~/")
+
+(defun org-execute-file-search-in-elisp (s)
+  (when (eq major-mode 'emacs-lisp-mode)
+    
+    )
+  )
+
+(add-hook 'org-execute-file-search-functions 'org-execute-file-search-in-elisp)
+					      
 
 
 
