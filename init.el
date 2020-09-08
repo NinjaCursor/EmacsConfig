@@ -1,6 +1,6 @@
 ;;enable packages to be installed from melpa
 (require 'package)
-;poop					; list the packages you want
+					; list the packages you want
 (setq package-list '(org-journal eyebrowse org-ref pdf-tools))
 
 					; list the repositories containing them
