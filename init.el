@@ -1,7 +1,7 @@
 ;;enable packages to be installed from melpa
 (require 'package)
 					; list the packages you want
-(setq package-list '(org-journal eyebrowse org-ref pdf-tools))
+(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter))
 
 					; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
@@ -134,14 +134,12 @@
  ;; If there is more than one, they won't work right.
  )
 
-<<<<<<< HEAD
 ; pdf tools
 (use-package pdf-tools   
 :ensure t 
 :config   (pdf-tools-install)   
 (setq-default pdf-view-display-size 'fit-page))
 
-=======
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
@@ -161,8 +159,6 @@
 (use-package pdf-tools
 
 :config (pdf-tools-install))
->>>>>>> fe0ac3d2cc73ce84fb9bd87654afef5b2ac598c5
-
 ;; allow help for function under cursor
 (require 'popup)
 
