@@ -1,8 +1,7 @@
 ;;enable packages to be installed from melpa
 (require 'package)
 
-					; list the packages you want
-(setq package-list '(org-journal eyebrowse org-ref))
+					; list the packages you want(setq package-list '(org-journal eyebrowse org-ref pdf-tools))
 
 					; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
@@ -134,6 +133,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+; pdf tools
+(use-package pdf-tools   
+:ensure t 
+:config   (pdf-tools-install)   
+(setq-default pdf-view-display-size 'fit-page))
+
 
 ;; allow help for function under cursor
 (require 'popup)
