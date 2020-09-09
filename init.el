@@ -404,7 +404,7 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
     :prepend t
     :empty-lines 1
     :created t)
- E )
+ )
 
 (setq org-capture-templates
       `(
