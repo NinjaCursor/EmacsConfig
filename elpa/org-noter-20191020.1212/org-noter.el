@@ -607,6 +607,7 @@ properties, by a margin of NEWLINES-NUMBER."
 
     (when location
       (org-entry-put nil org-noter-property-note-location (org-noter--pretty-print-location location))
+
       (when org-noter-doc-property-in-notes
         (org-noter--with-valid-session
          (org-entry-put nil org-noter-property-doc-file (org-noter--session-property-text session))
@@ -1725,8 +1726,6 @@ Only available with PDF Tools."
 
                (org-noter--insert-heading level title)
 
-	       (when
-	       
                (when location
                  (org-entry-put nil org-noter-property-note-location (org-noter--pretty-print-location location)))
 
