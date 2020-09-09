@@ -35,6 +35,8 @@
 
 (setq elpy-rpc-python-command "python")
 
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -82,6 +84,7 @@
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#488249" "#95d291" "#57a2a4" "#93E0E3" "#DC8CC3" "#bbb0cb")))
  '(org-agenda-files nil)
+ '(org-agenda-sticky t)
  '(org-capture-templates
    (quote
     (("b" "For recording those lightbulb moments" entry
@@ -341,7 +344,20 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
               (widen)
               (setq-local org-tag-alist (org-get-buffer-tags)))))
 
-					; example org-capture-templates that is rewritten ; for personal inspiration
+
+
+(setq org-agenda-custom-commands '(
+  ("1" "Events" agenda "display deadlines and exclude scheduled" (
+    (org-agenda-span 'week)
+    (org-agenda-time-grid nil)
+    (org-agenda-show-all-dates nil)
+    (org-agenda-entry-types '(:deadline)) ;; this entry excludes :scheduled
+    (org-deadline-warning-days 1) ))
+    ))
+
+(setq org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA")
+
+					;example org-capture-templates that is rewritten ; for personal inspiration
 (setq org-capture-templates
       '(("d" ; key
 	 "Demo template"  ; description
