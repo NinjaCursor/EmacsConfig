@@ -1,7 +1,9 @@
 (package-initialize)
-(org-babel-load-file "~/.emacs.d/config.org")
 
+(org-babel-load-file "~/.emacs.d/config.org")
 ;; (setq elpy-rpc-python-command "python")
+
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -49,7 +51,6 @@
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#488249" "#95d291" "#57a2a4" "#93E0E3" "#DC8CC3" "#bbb0cb")))
- '(org-agenda-files nil)
  '(org-agenda-sticky t)
  '(org-capture-templates
    (quote
@@ -96,6 +97,7 @@
    ["#4F4F4F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#fffff6"])
  '(xterm-color-names-bright
    ["#3F3F3F" "#DFAF8F" "#878777" "#6F6F6F" "#DCDCCC" "#bbb0cb" "#FFFFEF" "#FFFFFD"]))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

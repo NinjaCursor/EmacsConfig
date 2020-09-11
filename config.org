@@ -173,8 +173,8 @@ Sets up a rudimentary org-mode setup, with org-capture for quick note taking and
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
-(setq org-agenda-files (list "~/Dropbox/org-mode/tasks.org"
-                             "~/Dropbox/org-mode/school_tasks.org"))
+;(setq org-agenda-files (list "~/Dropbox/org-mode/tasks.org"
+;                             "~/Dropbox/org-mode/school_tasks.org"))
 (setq org-directory "~/Dropbox/org-mode")
 
 (global-set-key (kbd "C-c l") 'org-store-link)
@@ -183,9 +183,12 @@ Sets up a rudimentary org-mode setup, with org-capture for quick note taking and
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
-; todo: (setq org-agenda-files '("~/Dropbox/org-mode/"))
-
+(setq org-agenda-files "~/Dropbox/org-mode/")
+(setq randomiiiii "44")
 #+END_SRC
+
+#+RESULTS:
+| ~/Dropbox/org-mode/ |
 
 *** Org-Agenda
 
@@ -299,7 +302,6 @@ The function template-factor reduces redundant code in org-capture templates.
 
 
 #+END_SRC
-
 
 ** Magit
 
