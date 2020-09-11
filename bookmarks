@@ -4,7 +4,7 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
  (filename . "~/Dropbox/org-mode/resources.org")
- (front-context-string . "** how to use pd")
+ (front-context-string . "** How to quickl")
  (rear-context-string . ":END:\n\n* Emacs\n\n")
- (position . 331))
+ (position . 533))
 )
