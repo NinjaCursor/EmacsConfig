@@ -1,0 +1,5 @@
+cd 
+ls
+nano ~/.ssh/config
+cat ~/.ssh/config
+exit
