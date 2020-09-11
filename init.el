@@ -1,6 +1,4 @@
 (package-initialize)
-
-(org-babel-load-file "~/.emacs.d/config.org")
 ;; (setq elpy-rpc-python-command "python")
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -104,3 +102,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(org-babel-load-file "~/.emacs.d/config.org")
