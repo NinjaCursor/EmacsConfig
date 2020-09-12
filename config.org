@@ -192,7 +192,7 @@ Sets up a rudimentary org-mode setup, with org-capture for quick note taking and
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-agenda-files '("~/Dropbox/org-mode/"))
-(setq randomiiiii "44")
+
 #+END_SRC
 
 #+RESULTS:
@@ -386,9 +386,9 @@ Thanks to [[https://emacs.stackexchange.com/questions/33525/how-to-open-systems-
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-theme 'ascii)
-
+(setq-default neo-show-hidden-files t)
 
 #+END_SRC
 
 #+RESULTS:
-: ascii
+: t

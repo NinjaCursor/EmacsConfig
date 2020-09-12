@@ -119,8 +119,7 @@ Null prefix argument turns off the mode."
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
-(setq org-agenda-files "~/Dropbox/org-mode/")
-(setq randomiiiii "44")
+(setq org-agenda-files '("~/Dropbox/org-mode/"))
 
 (setq org-agenda-custom-commands '(
   ("1" "Events" agenda "display deadlines and exclude scheduled" (
@@ -248,3 +247,4 @@ Null prefix argument turns off the mode."
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-theme 'ascii)
+(setq-default neo-show-hidden-files t)
