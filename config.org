@@ -191,12 +191,12 @@ Sets up a rudimentary org-mode setup, with org-capture for quick note taking and
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
-(setq org-agenda-files "~/Dropbox/org-mode/")
+(setq org-agenda-files '("~/Dropbox/org-mode/"))
 (setq randomiiiii "44")
 #+END_SRC
 
 #+RESULTS:
-| ~/Dropbox/org-mode/ |
+: 44
 
 *** Org-Agenda
 
