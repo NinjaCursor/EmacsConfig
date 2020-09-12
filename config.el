@@ -11,7 +11,9 @@
 (unless package-archive-contents 
   (package-refresh-contents))
 
-(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize use-package spacemacs-theme))
+(package-refresh-contents)
+
+(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize use-package spacemacs-theme neotree))
 
 (require 'use-package)
 
@@ -242,3 +244,7 @@ Null prefix argument turns off the mode."
 
 ;; (create-spacemacs-theme 'dark 'spacemacs-dark)
 (load-theme 'spacemacs-dark t)
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-theme 'ascii)

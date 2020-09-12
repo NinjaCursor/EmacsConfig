@@ -24,7 +24,9 @@ Make a list of packages that we want to always be installed. Whether this config
 (unless package-archive-contents 
   (package-refresh-contents))
 
-(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize use-package spacemacs-theme))
+(package-refresh-contents)
+
+(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize use-package spacemacs-theme neotree))
 
 (require 'use-package)
 
@@ -375,3 +377,18 @@ Thanks to [[https://emacs.stackexchange.com/questions/33525/how-to-open-systems-
 
 #+RESULTS:
 : t
+** Directory Tree
+
+[[https://github.com/jaypei/emacs-neotree][repo]]
+
+#+BEGIN_SRC emacs-lisp
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-theme 'ascii)
+
+
+#+END_SRC
+
+#+RESULTS:
+: ascii
