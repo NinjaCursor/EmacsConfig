@@ -24,7 +24,7 @@ Make a list of packages that we want to always be installed. Whether this config
 (unless package-archive-contents 
   (package-refresh-contents))
 
-(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize use-package))
+(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize use-package spacemacs-theme))
 
 (require 'use-package)
 
@@ -324,7 +324,7 @@ Here is [[https://emacs.stackexchange.com/questions/19440/magit-extremely-slow-i
 #+END_SRC
 
 #+RESULTS:
-| lambda | nil | (progn (interactive) (message magit is disabled on windows)) |
+| lambda | nil | (interactive) | (message magit is disabled on windows) |
 
 ** Eyebrowse for Multitasking
 
@@ -359,3 +359,19 @@ Thanks to [[https://emacs.stackexchange.com/questions/33525/how-to-open-systems-
 
 #+RESULTS:
 : open-terminal
+
+** Spacemacs Theme
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; (require 'spacemacs-common)
+
+  ;; (deftheme spacemacs-dark "Spacemacs theme, the dark version")
+
+  ;; (create-spacemacs-theme 'dark 'spacemacs-dark)
+  (load-theme 'spacemacs-dark t)
+
+#+END_SRC
+
+#+RESULTS:
+: t

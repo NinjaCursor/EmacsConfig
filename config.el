@@ -1,6 +1,5 @@
 (require 'package) ; todo: don't know what this does
 
-
 (setq package-archives  '(("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -12,8 +11,9 @@
 (unless package-archive-contents 
   (package-refresh-contents))
 
-(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize use-package))
+(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize use-package spacemacs-theme))
 
+(require 'use-package)
 
 ; ensure packages in package-list are always installed
 (dolist (package package-list)
@@ -216,7 +216,10 @@ Null prefix argument turns off the mode."
 	  )
 	))
 
-(define-key global-map (kbd "C-c g") 'magit-status)
+(if (string-equal system-type "windows-nt")
+  (define-key global-map (kbd "C-c g") (lambda () (interactive) (message "magit is disabled on windows")))
+  (define-key global-map (kbd "C-c g") 'magit-status)
+)
 
 (use-package eyebrowse
   :diminish eyebrowse-mode
@@ -232,3 +235,10 @@ Null prefix argument turns off the mode."
   (interactive)
   (start-process-shell-command (format "cmd(%s)" default-directory) nil "start cmd"))
 (global-set-key (kbd "C-c e") 'open-terminal)
+
+;; (require 'spacemacs-common)
+
+;; (deftheme spacemacs-dark "Spacemacs theme, the dark version")
+
+;; (create-spacemacs-theme 'dark 'spacemacs-dark)
+(load-theme 'spacemacs-dark t)
