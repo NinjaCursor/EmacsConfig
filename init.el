@@ -1,7 +1,7 @@
 ;;enable packages to be installed from melpa
 (require 'package)
 					; list the packages you want
-(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit hackernewshac))
+(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit spacemacs-theme))
 
 					; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
