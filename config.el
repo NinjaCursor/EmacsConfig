@@ -1,5 +1,6 @@
 (require 'package) ; todo: don't know what this does
 
+
 (setq package-archives  '(("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -11,7 +12,7 @@
 (unless package-archive-contents 
   (package-refresh-contents))
 
-(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize))
+(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize use-package))
 
 
 ; ensure packages in package-list are always installed
@@ -117,7 +118,6 @@ Null prefix argument turns off the mode."
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-agenda-files "~/Dropbox/org-mode/")
-
 (setq randomiiiii "44")
 
 (setq org-agenda-custom-commands '(

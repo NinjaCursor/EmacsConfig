@@ -24,8 +24,9 @@ Make a list of packages that we want to always be installed. Whether this config
 (unless package-archive-contents 
   (package-refresh-contents))
 
-(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize))
+(setq package-list '(org-journal eyebrowse org-ref pdf-tools org-noter magit htmlize use-package))
 
+(require 'use-package)
 
 ; ensure packages in package-list are always installed
 (dolist (package package-list)
@@ -310,14 +311,20 @@ The function template-factor reduces redundant code in org-capture templates.
 
 ** Magit
 
+Magit seems to crash repeatedly on Windows. When checking magit's website, it seems that this problem is not due to customization errors; instead, magit just doesn't fair well in a Windows environment.
+Here is [[https://emacs.stackexchange.com/questions/19440/magit-extremely-slow-in-windows-how-do-i-optimize][proof]].
+
 #+BEGIN_SRC emacs-lisp
 
-(define-key global-map (kbd "C-c g") 'magit-status)
+(if (string-equal system-type "windows-nt")
+  (define-key global-map (kbd "C-c g") (lambda () (interactive) (message "magit is disabled on windows")))
+  (define-key global-map (kbd "C-c g") 'magit-status)
+)
 
 #+END_SRC
 
 #+RESULTS:
-: magit-status
+| lambda | nil | (progn (interactive) (message magit is disabled on windows)) |
 
 ** Eyebrowse for Multitasking
 
