@@ -106,8 +106,8 @@ Null prefix argument turns off the mode."
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
-(setq org-agenda-files (list "~/Dropbox/org-mode/tasks.org"
-                             "~/Dropbox/org-mode/school_tasks.org"))
+;(setq org-agenda-files (list "~/Dropbox/org-mode/tasks.org"
+;                             "~/Dropbox/org-mode/school_tasks.org"))
 (setq org-directory "~/Dropbox/org-mode")
 
 (global-set-key (kbd "C-c l") 'org-store-link)
@@ -115,6 +115,8 @@ Null prefix argument turns off the mode."
 
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
+
+(setq org-agenda-files "~/Dropbox/org-mode/")
 
 (setq randomiiiii "44")
 
